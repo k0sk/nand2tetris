@@ -1,5 +1,14 @@
 class Parser
-  def initialize()
+  def initialize(filename)
+    @asm = File.new(filename)
+  end
+
+  def has_more_commands?()
+    if (@asm.eof?)
+      return false
+    end
+
+    return true
   end
 
   def advance()
