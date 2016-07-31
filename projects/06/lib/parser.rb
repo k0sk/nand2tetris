@@ -39,9 +39,11 @@ class Parser
   end
 
   def comp()
+    return @command.split('=')[1]
   end
 
   def jump()
+    return @command.split(';')[1]
   end
 end
 

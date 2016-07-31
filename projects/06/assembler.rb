@@ -16,6 +16,8 @@ while parser.has_more_commands?
     puts parser.symbol()
   else
     puts parser.dest()
+    puts parser.comp()
+    puts parser.jump()
   end
 end
 
