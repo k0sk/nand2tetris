@@ -17,7 +17,7 @@ class Parser
   end
 
   def advance()
-    @command = @asm.readline.chomp()
+    @command = remove_comments(@asm.readline.chomp())
   end
 
   def command_type()
@@ -44,6 +44,11 @@ class Parser
 
   def jump()
     return @command.split(';')[1]
+  end
+
+  private
+  def remove_comments(s)
+    return s.gsub(/\/\/.*/, '')
   end
 end
 
