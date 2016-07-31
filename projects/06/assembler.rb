@@ -5,5 +5,9 @@ load 'lib/symbol_table.rb'
 filename = ARGV[0]
 
 parser = Parser.new(filename)
-parser.advance()
+
+while parser.has_more_commands?
+  parser.advance()
+  puts parser.command_type()
+end
 

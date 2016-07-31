@@ -1,4 +1,8 @@
+load 'lib/command_type.rb'
+
 class Parser
+  include CommandType
+
   def initialize(filename)
     @asm = File.new(filename)
     @command = ''
@@ -17,6 +21,13 @@ class Parser
   end
 
   def command_type()
+    if /@/.match(@command)
+      return A_COMMAND
+    elsif /=|;/.match(@command)
+      return C_COMMAND
+    end
+
+    return L_COMMAND
   end
 
   def symbol()
