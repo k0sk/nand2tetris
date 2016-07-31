@@ -14,6 +14,8 @@ while parser.has_more_commands?
   puts parser.command_type()
   if parser.command_type() == A_COMMAND or parser.command_type() == L_COMMAND
     puts parser.symbol()
+  else
+    puts parser.dest()
   end
 end
 

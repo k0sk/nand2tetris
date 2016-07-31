@@ -35,6 +35,7 @@ class Parser
   end
 
   def dest()
+    return @command.split(/=|;/)[0]
   end
 
   def comp()
