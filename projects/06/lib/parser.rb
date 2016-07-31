@@ -1,6 +1,7 @@
 class Parser
   def initialize(filename)
     @asm = File.new(filename)
+    @command = ''
   end
 
   def has_more_commands?()
@@ -12,6 +13,7 @@ class Parser
   end
 
   def advance()
+    @command = @asm.readline.chomp()
   end
 
   def command_type()

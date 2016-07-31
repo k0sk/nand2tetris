@@ -5,4 +5,5 @@ load 'lib/symbol_table.rb'
 filename = ARGV[0]
 
 parser = Parser.new(filename)
+parser.advance()
 
