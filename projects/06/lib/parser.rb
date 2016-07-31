@@ -31,6 +31,7 @@ class Parser
   end
 
   def symbol()
+    return @command.delete('@()')
   end
 
   def dest()
