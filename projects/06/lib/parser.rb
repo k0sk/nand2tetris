@@ -9,15 +9,19 @@ class Parser
   end
 
   def has_more_commands?()
-    if (@asm.eof?)
-      return false
+    while not @asm.eof?
+      @next_command = remove_comments(@asm.readline.chomp.strip)
+
+      if not @next_command.empty?
+        return true
+      end
     end
 
-    return true
+    return false
   end
 
   def advance()
-    @command = remove_comments(@asm.readline.chomp())
+    @command = @next_command
   end
 
   def command_type()
