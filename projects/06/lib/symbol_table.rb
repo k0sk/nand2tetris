@@ -1,6 +1,8 @@
+load 'lib/predefined_symbol.rb'
+
 class SymbolTable
   def initialize()
-    @table = {}
+    @table = {}.merge(PredefinedSymbol::SYMBOL)
   end
 
   def add_entry(symbol, address)
