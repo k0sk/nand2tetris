@@ -38,16 +38,29 @@ class Parser
     return @command.delete('@()')
   end
 
+  def parse()
+    contains_dest = /=/.match(@command)
+    contains_jump = /;/.match(@command)
+
+    if contains_dest and contains_jump
+      @c_command = @command.split(/=|;/)
+    elsif contains_dest
+      @c_command = @command.split('=') + [nil]
+    elsif contains_jump
+      @c_command = [nil] + @command.split(';')
+    end
+  end
+
   def dest()
-    return @command.split(/=|;/)[0]
+    return @c_command[0]
   end
 
   def comp()
-    return @command.split('=')[1]
+    return @c_command[1]
   end
 
   def jump()
-    return @command.split(';')[1]
+    return @c_command[2]
   end
 
   private
