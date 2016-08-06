@@ -18,4 +18,6 @@ module Code
 
     return JUMP[:null]
   end
+
+  module_function :dest, :comp, :jump
 end

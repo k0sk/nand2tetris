@@ -2,8 +2,6 @@ load 'lib/parser.rb'
 load 'lib/code.rb'
 load 'lib/symbol_table.rb'
 
-include Code
-
 filename = ARGV[0]
 
 parser = Parser.new(filename)
@@ -16,8 +14,8 @@ while parser.has_more_commands?
     puts "symbol: #{parser.symbol}"
   else
     parser.parse
-    puts "dest: #{parser.dest} #{dest(parser.dest)}" unless parser.dest.nil?
-    puts "comp: #{parser.comp} #{comp(parser.comp)}" unless parser.comp.nil?
-    puts "jump: #{parser.jump} #{jump(parser.jump)}" unless parser.jump.nil?
+    puts "dest: #{parser.dest} #{Code.dest(parser.dest)}" unless parser.dest.nil?
+    puts "comp: #{parser.comp} #{Code.comp(parser.comp)}" unless parser.comp.nil?
+    puts "jump: #{parser.jump} #{Code.jump(parser.jump)}" unless parser.jump.nil?
   end
 end
