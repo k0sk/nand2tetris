@@ -7,15 +7,17 @@ filename = ARGV[0]
 parser = Parser.new(filename)
 
 while parser.has_more_commands?
-  puts parser.advance
-  parser.command_type
-  if parser.command_type == CommandType::A_COMMAND or
-      parser.command_type == CommandType::L_COMMAND
-    puts "symbol: #{parser.symbol}"
+  parser.advance
+  if parser.command_type == CommandType::A_COMMAND
+    puts "0#{format('%.15b', parser.symbol)}"
+  elsif parser.command_type == CommandType::L_COMMAND
+    # puts "symbol: #{parser.symbol}"
   else
     parser.parse
-    puts "dest: #{parser.dest} #{Code.dest(parser.dest)}" unless parser.dest.nil?
-    puts "comp: #{parser.comp} #{Code.comp(parser.comp)}" unless parser.comp.nil?
-    puts "jump: #{parser.jump} #{Code.jump(parser.jump)}" unless parser.jump.nil?
+    puts "111#{Code.comp(parser.comp)}#{Code.dest(parser.dest)}" \
+            "#{Code.jump(parser.jump)}"
+    # puts "dest: #{parser.dest} #{Code.dest(parser.dest)}"
+    # puts "comp: #{parser.comp} #{Code.comp(parser.comp)}"
+    # puts "jump: #{parser.jump} #{Code.jump(parser.jump)}"
   end
 end
