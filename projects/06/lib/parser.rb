@@ -10,7 +10,7 @@ class Parser
 
   def has_more_commands?()
     while not @asm.eof?
-      @next_command = remove_comments(@asm.readline.chomp.strip)
+      @next_command = remove_comments(@asm.readline).strip
 
       if not @next_command.empty?
         return true
@@ -55,4 +55,3 @@ class Parser
     return s.gsub(/\/\/.*/, '')
   end
 end
-
