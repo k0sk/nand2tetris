@@ -7,12 +7,10 @@ class Parser
   end
 
   def has_more_commands?()
-    while not @asm.eof?
+    while !@asm.eof?
       @next_command = remove_comments(@asm.readline).strip
 
-      if not @next_command.empty?
-        return true
-      end
+      return true unless @next_command.empty?
     end
 
     return false
@@ -40,7 +38,7 @@ class Parser
     contains_dest = /=/.match(@command)
     contains_jump = /;/.match(@command)
 
-    if contains_dest and contains_jump
+    if contains_dest && contains_jump
       @c_command = @command.split(/=|;/)
     elsif contains_dest
       @c_command = @command.split('=') + [nil]
